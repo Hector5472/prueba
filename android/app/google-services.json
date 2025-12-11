@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "989801447738",
+    "project_id": "foodandfind-app",
+    "storage_bucket": "foodandfind-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989801447738:android:ae2121bbf3b9cfeae6d003",
+        "android_client_info": {
+          "package_name": "com.example.prueba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-3SQxnZNMqiXb-NMrEKw9jNvhDWpqsdg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
