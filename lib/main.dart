@@ -88,6 +88,30 @@ class HomeScreen extends StatelessWidget {
     },
   ];
 
+  static const List<Map<String, dynamic>> nearbyRestaurants = [   // Son datos ficticios, no reales
+  {
+    "name": "Bar Casa Perdomo",
+    "distance": 1.2,
+    "type": "Comida canaria",
+  },
+  {
+    "name": "Rincón de Chrisday",
+    "distance": 2.0,
+    "type": "Tapas",
+  },
+  {
+    "name": "INSÓLITO Bistró Maspalomas",
+    "distance": 2.3,
+    "type": "Italiano",
+  },
+  {
+    "name": "Mercadito Ibérico",
+    "distance": 3.1,
+    "type": "Ibérico",
+  },
+];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -214,6 +238,85 @@ class HomeScreen extends StatelessWidget {
             ),
 
             const SizedBox(height: 30),
+
+            // ---------------------------------------------
+// SECCIÓN: Restaurantes Cerca de Ti
+// ---------------------------------------------
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 16),
+  child: const Text(
+    "Cerca de Ti",
+    style: TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+),
+
+const SizedBox(height: 12),
+
+ListView.builder(
+  shrinkWrap: true,
+  physics: const NeverScrollableScrollPhysics(),
+  itemCount: nearbyRestaurants.length,
+  itemBuilder: (context, index) {
+    final rest = nearbyRestaurants[index];
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 14, left: 16, right: 16),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(14),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            height: 60,
+            width: 60,
+            decoration: BoxDecoration(
+              color: Colors.green.shade100,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Icon(Icons.restaurant, color: Colors.green),
+          ),
+
+          const SizedBox(width: 12),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  rest["name"],
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+
+                const SizedBox(height: 4),
+
+                Text(
+                  "${rest["distance"]} km — ${rest["type"]}",
+                  style: const TextStyle(fontSize: 13),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  },
+),
+
           ],
         ),
       ),
