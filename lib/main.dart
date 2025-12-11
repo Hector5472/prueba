@@ -132,7 +132,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
 
-            // Título de la sección
+            // Sección: Restaurantes Populares
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
@@ -245,9 +245,9 @@ class HomeScreen extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // ---------------------------------------------
-// SECCIÓN: Restaurantes Cerca de Ti
-// ---------------------------------------------
+            
+// SECCIÓN: Restaurantes cerca de ti
+
 Padding(
   padding: const EdgeInsets.symmetric(horizontal: 16),
   child: const Text(
@@ -285,8 +285,8 @@ ListView.builder(
       child: Row(
         children: [
           Container(
-            height: 60,
-            width: 60,
+            height: 50,
+            width: 50,
             decoration: BoxDecoration(
               color: Colors.green.shade100,
               borderRadius: BorderRadius.circular(12),
