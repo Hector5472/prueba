@@ -46,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Mapa'),
         ],
         onTap: (index) {
-          setState(() => currentIndex = index);
+          setState(() => currentIndex = index); // Cambia la pantalla actual a la seleccionada
         },
       ),
     );
@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                                 size: 32,
                               )
                             : Image.network(
-                                rest.imagenURL,
+                                rest.imagenURL,   // En firebase se detalla la URL completa /assets/images/...
                                 fit: BoxFit.cover,
                                 errorBuilder: (context, error, stackTrace) {
                                   return const Icon(
@@ -157,6 +157,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
 
+
+                    // Redireccion a mapa con los parametros de latitud y longitud del restaurante
                     IconButton(
                       icon: const Icon(Icons.map, color: Colors.green),
                       onPressed: () {
