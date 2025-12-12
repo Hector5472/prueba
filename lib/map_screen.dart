@@ -20,7 +20,7 @@ class _MapScreenState extends State<MapScreen> {
     zoom: 10,
   );
 
-  // Tus marcadores completos (no los toco)
+  // Marcadores de restaurantes
   Set<Marker> _markers = {};
 
   Future<void> loadMarkers() async {
@@ -48,8 +48,9 @@ class _MapScreenState extends State<MapScreen> {
     loadMarkers();
   }
 
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
       appBar: AppBar(title: const Text("Mapa")),
       body: GoogleMap(

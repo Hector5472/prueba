@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Restaurantes GC', home: const MainScreen());
+    return MaterialApp(title: 'Food&Find', home: const MainScreen());
   }
 }
 
@@ -30,33 +30,34 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+  int currentIndex = 0;
 
-  final List<Widget> _pantallas = [HomeScreen(), const MapScreen()];
+  final List<Widget> pantallas = [HomeScreen(), const MapScreen()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pantallas[_currentIndex],
+      body: pantallas[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
 
           BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Mapa'),
         ],
         onTap: (index) {
-          setState(() => _currentIndex = index);
+          setState(() => currentIndex = index);
         },
       ),
     );
   }
 }
 
+//------------------- Pantalla de inicio ------------------//
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  final RestaurantService _service = RestaurantService();
+  final RestaurantService service = RestaurantService();
 
   @override
   Widget build(BuildContext context) {
@@ -67,20 +68,22 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: FutureBuilder<List<Restaurant>>(
-        future: _service.getRestaurants(),
+        future: service.getRestaurants(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          final restaurants = snapshot.data!;
+          // Lista de restaurantes de Firebase
+          final restaurantes = snapshot.data!;
 
           return ListView.builder(
             padding: const EdgeInsets.all(16),
-            itemCount: restaurants.length,
+            itemCount: restaurantes.length,
             itemBuilder: (context, index) {
-              final rest = restaurants[index];
+              final rest = restaurantes[index];
 
+              // Tarjetas de restaurantes
               return Container(
                 margin: const EdgeInsets.only(bottom: 18),
                 padding: const EdgeInsets.all(12),
@@ -127,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 12),  // Solo es un espacio entre imagen y texto
 
                     Expanded(
                       child: Column(
