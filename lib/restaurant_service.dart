@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../restaurant.dart';
+import 'restaurant.dart';
 
 class RestaurantService {
-  final CollectionReference _ref =
-      FirebaseFirestore.instance.collection('restaurantes');
+  final CollectionReference _ref = FirebaseFirestore.instance.collection(
+    'restaurantes',
+  );
 
   Future<List<Restaurant>> getRestaurants() async {
     final snapshot = await _ref.get();
